@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d8feda8d-0b99-4024-ae41-44e5801dcca0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/1c/1cff37f1c5a72291c0270a22a296e931" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/6a/6a3137a71d50153d2799a569d65d7437" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/73/7344bf4a9ea3163f823120fff1337e64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/a1/a1166a0dc3eaf391074f85b0cd867113" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/ac/ac99a04bfcf8b056cc9b8a3368db0ee1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/c3/c398ac21e37288c06937c08655bd927c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/db/db050da74969732a280e2733a6131322" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/f2/f23906921efdf5e3d0b8988868cdf348" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Artifacts/ff/ff69dfb22e02139bdf33817b7f51de94" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/1900b0aE-inputdata.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/1900b0aE-inputdata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag.payloads" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag.payloads" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag_derived" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/1900b0aE.dag_derived" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/TundraBuildState.state" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/TundraBuildState.state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/TundraBuildState.state.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/TundraBuildState.state.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.ref.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.ref.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/backend1.traceevents" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/backend1.traceevents" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/backend2.traceevents" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/backend2.traceevents" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/buildprogram0.traceevents" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/buildprogram0.traceevents" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/fullprofile.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/fullprofile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/tundra.digestcache" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/tundra.digestcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Bee/tundra.log.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Bee/tundra.log.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/LastSceneManagerSetup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/LastSceneManagerSetup.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/SceneVisibilityState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/Search/transactions.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/Search/transactions.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/SourceAssetDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Library/ilpp.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../../Library/ilpp.pid" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/AssetImportWorker0-prev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/AssetImportWorker1-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/AssetImportWorker1-prev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/AssetImportWorker1.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/AssetImportWorker1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe10.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe13.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe14.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe15.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe4.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe5.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe6.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe7.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe8.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Logs/shadercompiler-UnityShaderCompiler.exe9.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/../../UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Matesoidicek"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Marannnn/Unity3D-FPS-Projekt_35-Kyberna.git",
+    "accountId": "bb5bf067-ec8d-4439-9dd7-9e8ed52259f1"
+  }
+}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/horseRide.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/horseRidePS.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2pW8zADPfI1eRX2ZtpxtLgehfvG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8feda8d-0b99-4024-ae41-44e5801dcca0" name="Changes" comment="" />
+      <created>1732870731825</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732870731825</updated>
+      <workItem from="1732870733976" duration="565000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

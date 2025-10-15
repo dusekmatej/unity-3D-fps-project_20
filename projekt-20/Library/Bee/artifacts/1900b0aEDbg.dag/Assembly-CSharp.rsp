@@ -370,7 +370,7 @@
 "Assets/Scripts/HealthSystem.cs"
 "Assets/Scripts/Horse/ChangeHorsePlaceholderPosition.cs"
 "Assets/Scripts/Horse/DismountHorse.cs"
-"Assets/Scripts/Horse/HorseMovement.cs"
+"Assets/Scripts/Horse/horseMovement.cs"
 "Assets/Scripts/Horse/MountHorse.cs"
 "Assets/Scripts/LoadSystem.cs"
 "Assets/Scripts/lookScript.cs"

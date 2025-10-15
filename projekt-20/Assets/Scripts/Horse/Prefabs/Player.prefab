@@ -14815,7 +14815,7 @@ Transform:
   m_GameObject: {fileID: 7782581983677517100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.76, z: -10.12}
+  m_LocalPosition: {x: 14.889789, y: 5.1425304, z: -4.893176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14865,8 +14865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 7782581983677517100}
-  horse: {fileID: 0}
-  horsePlaceholder: {fileID: 0}
+  horse: {fileID: 1820431958885121274, guid: 415a26c10cb4c0c468f4769fdcd4abd4, type: 3}
+  horsePlaceholder: {fileID: 505393156326963006, guid: ac99a71e4684c054f8e0da0614c767e6, type: 3}
   interactionDistance: 10
 --- !u!114 &2319779891899362602
 MonoBehaviour:
@@ -14883,6 +14883,7 @@ MonoBehaviour:
   controller: {fileID: 5260906608651868110}
   walkSpeed: 6
   sprintSpeed: 10
+  crouchSpeed: 3
   gravity: -25
   jumpHeight: 1.6
   groundCheck: {fileID: 5045656250561215095}
@@ -14890,6 +14891,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  slideSpeed: 20
+  slideDuration: 1
+  crouchHeight: 1
 --- !u!136 &968868571329101569
 CapsuleCollider:
   m_ObjectHideFlags: 0

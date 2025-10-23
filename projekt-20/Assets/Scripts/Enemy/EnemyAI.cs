@@ -1,46 +1,57 @@
+using System;
 using System.Threading;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
+    private float _timer;
+    
     // [Header ("SOMETHING")]
     public NavMeshAgent navAgent;
     public Transform playerObject;
     public LayerMask groundLayer, playerLayer, obstacleLayer;
 
     public Vector3 walkPoint;
-    private bool walkPointSet = false;
+    private bool walkPointSet;
     public float walkPointRange;
     public GameObject projectile;
     public float health;
-    public TMPro.TMP_Text inRangeText;
-    public TMPro.TMP_Text inSightText;
+    //public TMPro.TMP_Text inRangeText;
+    //public TMPro.TMP_Text inSightText;
 
     public float atttackCooldown = 2f;
     private bool hasAttacked;
 
     public float detectRange, attackRange;
-    public bool inSight, inRange;
 
+    private bool inRange;
+    private bool inSight;
+
+    private bool lastInSight;
+    private bool lastInRange;
+    
+    
     void Awake()
     {
         playerObject = GameObject.FindWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
     }
-    
+
     private void Update()
     {
         if (navAgent == null || playerObject == null) return;
-        
+
         float distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
 
         inRange = distanceToPlayer <= attackRange;
         inSight = distanceToPlayer <= detectRange && PlayerVisible();
 
 
-        
+
         bool withinDetectRange = distanceToPlayer <= detectRange;
         bool withinAttackRange = distanceToPlayer <= attackRange;
 
@@ -55,14 +66,33 @@ public class EnemyAI : MonoBehaviour
 
         inSight = distanceToPlayer <= detectRange;
         inRange = distanceToPlayer <= attackRange;
+
+        //inSightText.text = $"In Sight: {inSight}";
+        //inRangeText.text = $"In Range: {inRange}";
+
+        // _timer += Time.deltaTime;
+        // if (_timer >= 0.2f)
+        // {
+        //     _timer = 0f;
+        //     Patrol();
+        // }
         
-        inSightText.text = $"In Sight: {inSight}";
-        inRangeText.text = $"In Range: {inRange}";
-        
-        if (!inSight && !inRange) Patrol();
+        if (!inSight && !inRange) Patrol(); 
         if (inSight && !inRange) Follow();
         if (inRange && inSight) Attack();
-    }
+
+        // if (inSightText != null && inSight != lastInSight)
+        // {
+        //     inSightText.SetText(inSight ? "In Sight: True" : "In Sight: False");
+        //     lastInSight = inSight;
+        // }
+        //
+        // if (inRangeText != null && inRange != lastInRange)
+        // {
+        //     inRangeText.SetText(inRange ? "In Range: True" : "In Range: False");
+        //     lastInRange = inRange;
+        // }
+}
 
     private bool PlayerVisible()
     {
@@ -78,7 +108,7 @@ public class EnemyAI : MonoBehaviour
 
         return false;
     }
-
+    
     private void Patrol()
     {
         if (!walkPointSet) FindWalkPoint();
@@ -98,42 +128,32 @@ public class EnemyAI : MonoBehaviour
 
     private void FindWalkPoint()
     {
-        int maxAttempts = 10;
-        for (int i = 0; i < maxAttempts; i++)
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    
+        Debug.DrawRay(walkPoint, Vector3.up * 5f, Color.red, 5f);
+        
+        Vector3 distanceToWalkPoint = walkPoint - transform.position;
+        Vector3 directionToWalkPoint = (walkPoint - transform.position).normalized;
+    
+        // Ground check - true 
+        bool groundHit = Physics.Raycast(walkPoint, Vector3.down, out RaycastHit groundHitInfo, 5f, groundLayer);
+        
+        // Obstacle check - false
+        //bool obstacleHit = Physics.Raycast(walkPoint + new Vector3(0f, 1f, 0f), Vector3.up, out RaycastHit obstacleHitInfo, 5f, obstacleLayer);
+        //transform.LookAt(walkPoint);
+
+        Debug.DrawRay(transform.position, directionToWalkPoint * distanceToWalkPoint.magnitude, Color.yellow, 5f);
+        
+        // Obstacle check through the path - false
+        // bool obstacleHitThrough = Physics.Raycast(transform.position, directionToWalkPoint, out RaycastHit obstacleTroughHitInfo, distanceToWalkPoint.magnitude + 1f, obstacleLayer);
+        
+        if (groundHit) // && !obstacleHit && !obstacleHitThrough
         {
-            float randomZ = Random.Range(-walkPointRange, walkPointRange);
-            float randomX = Random.Range(-walkPointRange, walkPointRange);
-            Vector3 backup = new Vector3(transform.position.x + randomX, transform.position.y,
-                transform.position.z + randomZ);
-
-            if (NavMesh.SamplePosition(backup, out NavMeshHit navHit, 2f, NavMesh.AllAreas))
-            {
-                walkPoint = navHit.position;
-                // walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-            
-                Debug.DrawRay(walkPoint, Vector3.up * 5f, Color.red, 5f);
-            
-                Vector3 distanceToWalkPoint = walkPoint - transform.position;
-                Vector3 directionToWalkPoint = (walkPoint - transform.position).normalized;
-            
-            
-                bool groundHit = Physics.Raycast(walkPoint, Vector3.down, out RaycastHit groundHitInfo, 5f, groundLayer);
-                Debug.Log("Ground raycast succesful");
-                bool obstacleHit = Physics.Raycast(walkPoint + new Vector3(0f, 1f, 0f), Vector3.up, out RaycastHit obstacleHitInfo, 5f, obstacleLayer);
-                transform.LookAt(walkPoint);
-                Debug.Log("Obstacle raycast succesful");
-
-                Debug.DrawRay(transform.position, directionToWalkPoint * distanceToWalkPoint.magnitude, Color.yellow, 5f);
-                bool obstacleHitThrough = Physics.Raycast(transform.position, directionToWalkPoint,
-                    out RaycastHit obstacleTroughHitInfo, distanceToWalkPoint.magnitude + 1f, obstacleLayer);
-                Debug.Log("Obstacle trough raycast succesful");
-                if (groundHit && !obstacleHit && !obstacleHitThrough)
-                {
-                    Debug.Log("walk point set to true - correct path");
-                    walkPointSet = true;
-                    return;
-                }   
-            }
+            walkPointSet = true;
+            return;
         }
 
         walkPointSet = false;

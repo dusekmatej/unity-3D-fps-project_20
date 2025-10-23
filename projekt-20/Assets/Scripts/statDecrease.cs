@@ -1,34 +1,27 @@
 using System.Collections;
+using Unity.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class statDecrease : MonoBehaviour
 {
 
     public int decreasePercent = 100;
+    public TMP_Text decreaseText;
+    public Image decreaseImage;
+    
     public int decreaseAmount = 1;
     public float decreaseTime = 6;
-    public TextMeshProUGUI decreaseText;
     public bool isDecreasing = true;
+    private float _timer;
 
-    public string customkey;
     
     void Start()
     {
         StartCoroutine(Decrease());
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(customkey))
-        {
-            decreasePercent = decreasePercent + 10;
-        }
-
-        decreaseText.text = decreasePercent + "%";
-    }
-
+    
     IEnumerator Decrease()
     {
         while (isDecreasing)
@@ -36,6 +29,8 @@ public class statDecrease : MonoBehaviour
             yield return new WaitForSeconds(decreaseTime);
             decreasePercent = decreasePercent - decreaseAmount;
 
+            decreaseText.text = decreasePercent + "%";
+            decreaseImage.fillAmount = 0.5f;
         }
     }
 }

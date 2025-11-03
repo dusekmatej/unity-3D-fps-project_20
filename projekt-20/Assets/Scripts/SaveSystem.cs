@@ -5,16 +5,16 @@ using System.IO;
 
 public class SaveSystem : MonoBehaviour
 {
-    // Cesta k souboru, kde budou uložena data
+    
     private string filePath;
 
     void Start()
     {
-        // Urèujeme cestu pro uložení souboru (v adresáøi Application.persistentDataPath)
+       
         filePath = Path.Combine(Application.persistentDataPath, "playerSave.json");
     }
 
-    // Uložení pozice hráèe do JSON souboru
+    
     public void SaveGame(Transform playerTransform)
     {
         if (playerTransform != null)
@@ -31,24 +31,24 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    // Naèítání pozice hráèe z JSON souboru
+    
     public void LoadGame(Transform playerTransform)
     {
         if (File.Exists(filePath))
         {
-            // Naèítání JSON dat ze souboru
+            
             string json = File.ReadAllText(filePath);
 
-            // Deserializace JSON do PlayerData
+            
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            // Obnovení pozice hráèe
+            
             playerTransform.position = new Vector3 (data.posX, data.posY, data.posZ);
-            Debug.Log("Pozice hráèe byla naètena.");
+            Debug.Log("Pozice hrï¿½ï¿½e byla naï¿½tena.");
         }
         else
         {
-            Debug.Log("Uložená hra neexistuje.");
+            Debug.Log("Uloï¿½enï¿½ hra neexistuje.");
         }
     }
 }

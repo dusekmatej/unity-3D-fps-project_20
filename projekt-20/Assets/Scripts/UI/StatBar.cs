@@ -8,7 +8,7 @@ public class StatBar : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _text;
-
+    
     public void Bind(Statistic statistic)
     {
         _image.fillAmount = statistic.Value / statistic.MaxValue;

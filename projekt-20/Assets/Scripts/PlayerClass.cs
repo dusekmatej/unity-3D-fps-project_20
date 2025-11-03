@@ -7,7 +7,7 @@ public class PlayerData
     public float posY;
     public float posZ;
 
-   
+    // Konstruktor pro snadné vytvoøení instance tøídy
     public PlayerData(Vector3 playerPosition)
     {
         posX = playerPosition.x;

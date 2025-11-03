@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using UnityEngine;
+
+public class Projectile : MonoBehaviour
+{
+    public float damage = -10f;
+
+    void Awake()
+    {
+        if (TryGetComponent<Rigidbody>(out var rb))
+            rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        HandleHit(collision.gameObject);
+    }
+
+    void HandleHit(GameObject hit)
+    {
+        if (hit.CompareTag("Player"))
+        {
+            StatManager statManager = FindObjectOfType<StatManager>();
+            if (statManager != null)
+            {
+                Debug.Log("Modyfing health by " + damage);
+                statManager.Health.Modify(damage);
+            }
+        }
+        
+        Debug.Log("Destroying projectile");
+        Destroy(gameObject , 5f);
+    }
+}

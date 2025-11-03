@@ -8,20 +8,16 @@ using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
-    private float _timer;
-    
-    // [Header ("SOMETHING")]
+    [Header ("NavMesh Components")]
     public NavMeshAgent navAgent;
     public Transform playerObject;
     public LayerMask groundLayer, playerLayer, obstacleLayer;
-
-    public Vector3 walkPoint;
-    private bool walkPointSet;
-    public float walkPointRange;
+    
+    private Vector3 _patrolPoint;
+    private bool _pointSet;
+    public float pointThreshDistance;
     public GameObject projectile;
     public float health;
-    //public TMPro.TMP_Text inRangeText;
-    //public TMPro.TMP_Text inSightText;
 
     public float atttackCooldown = 2f;
     private bool hasAttacked;
@@ -35,28 +31,45 @@ public class EnemyAI : MonoBehaviour
     private bool lastInRange;
     
     
+    // TODO: Patrol mechanic
+    // TODO: Player chase mechanic
+    // TODO: Attack mechanic - not laggy one
+    // TODO: Health system
+    // TODO: Spawn system
+    
     void Awake()
     {
         playerObject = GameObject.FindWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
+
+        if (pointThreshDistance <= 0f) pointThreshDistance = 8f;
+
+        if (navAgent != null)
+        {
+            navAgent.updatePosition = true;
+            navAgent.updateRotation = true;
+            navAgent.isStopped = false;
+        }
+
+        if (TryGetComponent<Rigidbody>(out var rb) && !rb.isKinematic)
+        {
+            Debug.Log("EnemyAI Awake: Found non kinematic rigidbody");
+        }
     }
 
     private void Update()
     {
+        // Safety check
         if (navAgent == null || playerObject == null) return;
 
+        
         float distanceToPlayer = Vector3.Distance(transform.position, playerObject.position);
 
         inRange = distanceToPlayer <= attackRange;
         inSight = distanceToPlayer <= detectRange && PlayerVisible();
 
-
-
-        bool withinDetectRange = distanceToPlayer <= detectRange;
-        bool withinAttackRange = distanceToPlayer <= attackRange;
-
         bool hasSight = false;
-        if (withinDetectRange && withinAttackRange)
+        if (inSight && inRange)
         {
             Vector3 directionToPlayer = (playerObject.position - transform.position).normalized;
             if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, detectRange))
@@ -66,32 +79,12 @@ public class EnemyAI : MonoBehaviour
 
         inSight = distanceToPlayer <= detectRange;
         inRange = distanceToPlayer <= attackRange;
-
-        //inSightText.text = $"In Sight: {inSight}";
-        //inRangeText.text = $"In Range: {inRange}";
-
-        // _timer += Time.deltaTime;
-        // if (_timer >= 0.2f)
-        // {
-        //     _timer = 0f;
-        //     Patrol();
-        // }
         
         if (!inSight && !inRange) Patrol(); 
+        
+        
         if (inSight && !inRange) Follow();
         if (inRange && inSight) Attack();
-
-        // if (inSightText != null && inSight != lastInSight)
-        // {
-        //     inSightText.SetText(inSight ? "In Sight: True" : "In Sight: False");
-        //     lastInSight = inSight;
-        // }
-        //
-        // if (inRangeText != null && inRange != lastInRange)
-        // {
-        //     inRangeText.SetText(inRange ? "In Range: True" : "In Range: False");
-        //     lastInRange = inRange;
-        // }
 }
 
     private bool PlayerVisible()
@@ -109,54 +102,112 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
     
+    // if no patrol point, generate one and then set it as destination
     private void Patrol()
     {
-        if (!walkPointSet) FindWalkPoint();
-
-        if (walkPointSet)
+        if (navAgent == null)
         {
-            navAgent.SetDestination(walkPoint);
+            Debug.Log("Patrol: navAgent is null");
         }
         
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        
-        if (distanceToWalkPoint.magnitude < .1f)
+        // Quick agent health checks
+        if (!navAgent.enabled)
+            Debug.Log("Patrol: navAgent.disabled = true");
+        if (!navAgent.isOnNavMesh)
         {
-            walkPointSet = false;
+            Debug.Log("Patrol: navAgent is not on the NavMesh");
+            return;
+        }
+        
+        Debug.Log($"Patrol start: _pointSet={_pointSet} speed={navAgent.speed} isStopped={navAgent.isStopped} hasPath={navAgent.hasPath} remaining={navAgent.remainingDistance} pathStatus={navAgent.pathStatus}");
+
+        if (!_pointSet)
+        {
+            _patrolPoint = GeneratePointLocation();
+
+            if (_pointSet)
+            {
+                navAgent.SetDestination(_patrolPoint);
+                navAgent.isStopped = false;
+            }
+        }
+        else
+        {
+            if (!navAgent.hasPath && !navAgent.pathPending)
+            {
+                navAgent.SetDestination(_patrolPoint);
+            }
+        }
+
+        float arrivalThreshold = 0.4f;
+        if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
+                new Vector3(_patrolPoint.x, 0, _patrolPoint.z)) < arrivalThreshold)
+        {
+            _pointSet = false;
+            Debug.Log("Patrol: reached point, clearing _pointSet");
+        }
+        
+        if (!_pointSet)
+        {
+            Debug.Log("Patrol: no patrol point found");
+            return;
+        }
+        
+        Vector3 pointDistance = transform.position - _patrolPoint;
+
+        if (pointDistance.magnitude < 0.5f)
+        {
+            _pointSet = false;
+            Debug.Log("Patrol: reached point, clearing _pointSet");
         }
     }
 
-    private void FindWalkPoint()
+    // Generation of patrol point within threshold distance
+    private Vector3 GeneratePointLocation()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-    
-        Debug.DrawRay(walkPoint, Vector3.up * 5f, Color.red, 5f);
-        
-        Vector3 distanceToWalkPoint = walkPoint - transform.position;
-        Vector3 directionToWalkPoint = (walkPoint - transform.position).normalized;
-    
-        // Ground check - true 
-        bool groundHit = Physics.Raycast(walkPoint, Vector3.down, out RaycastHit groundHitInfo, 5f, groundLayer);
-        
-        // Obstacle check - false
-        //bool obstacleHit = Physics.Raycast(walkPoint + new Vector3(0f, 1f, 0f), Vector3.up, out RaycastHit obstacleHitInfo, 5f, obstacleLayer);
-        //transform.LookAt(walkPoint);
-
-        Debug.DrawRay(transform.position, directionToWalkPoint * distanceToWalkPoint.magnitude, Color.yellow, 5f);
-        
-        // Obstacle check through the path - false
-        // bool obstacleHitThrough = Physics.Raycast(transform.position, directionToWalkPoint, out RaycastHit obstacleTroughHitInfo, distanceToWalkPoint.magnitude + 1f, obstacleLayer);
-        
-        if (groundHit) // && !obstacleHit && !obstacleHitThrough
+        int maxAttempts = 30;
+        float sampleDistance = Mathf.Max(2f, pointThreshDistance);
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            walkPointSet = true;
-            return;
-        }
+            Debug.Log("Generating patrol point, attempt: " + attempt);
+            Vector3 randomOffset = Random.insideUnitSphere * pointThreshDistance;
+            randomOffset.y = 0f;
+            Vector3 _patrolPoint = transform.position + randomOffset;
+            
+            if (NavMesh.SamplePosition(_patrolPoint, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+            {
+                Debug.Log($"  Sampled navmesh pos: {hit.position}");
 
-        walkPointSet = false;
+                if (Vector3.Distance(hit.position, transform.position) < 0.5f)
+                {
+                    Debug.Log("  Hit too close to current position, skipping.");
+                    continue;
+                }
+                
+                NavMeshPath path = new NavMeshPath();
+                if (navAgent.CalculatePath(hit.position, path) && path.status == NavMeshPathStatus.PathComplete)
+                {
+                    _patrolPoint = hit.position;
+                    _pointSet = true;
+                    Debug.Log($"Selected patrol point: {_patrolPoint}");
+                    return _patrolPoint;
+                }
+                else
+                {
+                    Debug.Log($"Path incomplete or invalid");
+                }
+            }
+        }
+        
+        if (NavMesh.SamplePosition(transform.position + transform.forward * 1f, out NavMeshHit fallbackHit, sampleDistance, NavMesh.AllAreas))
+        {
+            _patrolPoint = fallbackHit.position;
+            _pointSet = true;
+            return _patrolPoint;
+        }
+        
+        _pointSet = false;
+        return transform.position;
     }
 
     private void Attack()
@@ -168,7 +219,7 @@ public class EnemyAI : MonoBehaviour
         {
             Rigidbody projectileRigidB = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             projectileRigidB.AddForce(transform.forward  * 32f, ForceMode.Impulse);
-            projectileRigidB.AddForce(transform.up * 8f, ForceMode.Impulse);
+            projectileRigidB.AddForce(transform.up * 4f, ForceMode.Impulse);
             
             hasAttacked = true;
             Invoke(nameof(ResetAttack), atttackCooldown);

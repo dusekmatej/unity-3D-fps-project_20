@@ -111,6 +111,7 @@
      <Compile Include="Assets\Scripts\Player\StatManager.cs" />
      <Compile Include="Assets\Scripts\LoadSystem.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Spawner.cs" />
      <Compile Include="Assets\Scripts\SaveSystem.cs" />
      <Compile Include="Assets\Scripts\WeaponSmooth.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />
@@ -128,6 +129,7 @@
      <Folder Include="Assets\Sand textures pack" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\Scripts\UI" />
+     <Folder Include="Assets\Scripts\Enemy\EnemyPrefab" />
      <Folder Include="Assets\Scenes" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <Folder Include="Assets\Audio" />

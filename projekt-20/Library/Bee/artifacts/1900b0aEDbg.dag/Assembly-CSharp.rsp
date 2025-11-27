@@ -364,6 +364,7 @@
 "Assets/Scripts/Enemy/EnemyAI.cs"
 "Assets/Scripts/Enemy/Patroller.cs"
 "Assets/Scripts/Enemy/Projectile.cs"
+"Assets/Scripts/Enemy/Spawner.cs"
 "Assets/Scripts/enemyAI.cs"
 "Assets/Scripts/EnemyDamage.cs"
 "Assets/Scripts/enemySpawn.cs"

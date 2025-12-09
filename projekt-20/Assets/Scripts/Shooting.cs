@@ -16,9 +16,6 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        
         animator.SetTrigger(shootAnimationTrigger);
-
-       
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using Enemy;
 using UnityEngine;
 
 public class GunScript : MonoBehaviour
@@ -13,10 +15,11 @@ public class GunScript : MonoBehaviour
 
     private bool canShoot = false;
     private float nextFireTime = 0f;
+    public LayerMask excludeLayers;
 
     void Awake()
     {
-        canShoot = true; // This ensures shooting stays enabled after the initial delay
+        canShoot = true;
     }
 
     void Update()
@@ -30,27 +33,37 @@ public class GunScript : MonoBehaviour
 
     void Shoot()
     {
+        EnemyAI enemyAi = new EnemyAI();
+        
         Debug.Log("Shoot pressed");
 
         if (muzzleFlash1 != null) muzzleFlash1.Play();
         if (muzzleFlash2 != null) muzzleFlash2.Play();
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        Vector3 origin = fpsCam.transform.position;
+        Vector3 direction = fpsCam.transform.forward;
+        
+        int layerMask = ~excludeLayers;
+
+        // Debug.DrawRay(origin, direction * range, Color.red, 10f);
+
+        if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            Debug.Log("Hit: " + hit.transform.name);
+            // Debug.DrawLine(origin, hit.point, Color.yellow, 1f);
 
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
+            Debug.Log($"Ray hit: {hit.transform.name} (layer: {LayerMask.LayerToName(hit.transform.gameObject.layer)}), collider: {hit.collider}");
+            
+            if (hit.transform.CompareTag("Enemy"))
             {
-                target.TakeDamage(damage);
+                var enemy = hit.transform.GetComponent<EnemyAI>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                    Debug.Log($"Dealt {damage} damage to {hit.transform.name}");
+                }
             }
 
-            if (impactEffect != null)
-            {
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 2f);
-            }
         }
     }
 }

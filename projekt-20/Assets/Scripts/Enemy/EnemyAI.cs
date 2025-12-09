@@ -4,10 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
-
-// TODO: Attack mechanic - not laggy one
-// TODO: Health system
-// TODO: Spawn system
+// TODO: Health system - in work
 
 namespace Enemy
 {
@@ -21,7 +18,7 @@ namespace Enemy
         public float detectRange = 35f;
         public float attackRange = 10f;  
         public float attackCooldown = 2f;
-        public float enemyHealth;
+        public float enemyHealth = 50f;
         public float pointThreshDistance = 5f;
         public GameObject projectile;
     
@@ -92,7 +89,7 @@ namespace Enemy
                 int roundedDistance = Mathf.RoundToInt(distanceToPlayer);
                 if (distance == roundedDistance)
                 {
-                    Debug.Log($"Distance matched: {roundedDistance}");
+                    // Debug.Log($"Distance matched: {roundedDistance}");
                     WalkAttack();
                 }
             }
@@ -135,22 +132,8 @@ namespace Enemy
         private void Patrol()
         {
 
-            if (DebugMode)
-            {
-                if (navAgent == null)
-                {
-                    Debug.Log("Patrol: navAgent is null");
-                }
-
-                // Quick agent health checks
-                if (!navAgent.enabled)
-                    Debug.Log("Patrol: navAgent.disabled = true");
-                if (!navAgent.isOnNavMesh)
-                {
-                    Debug.Log("Patrol: navAgent is not on the NavMesh");
-                    return;
-                }
-            }
+            if (navAgent == null) return;
+            if (!navAgent.enabled || !navAgent.isOnNavMesh) return;
             
             if (!_pointSet)
             {
@@ -267,9 +250,9 @@ namespace Enemy
             navAgent.SetDestination(playerObject.position);
         }
 
-        private void TakDamage(int damage)
+        public void TakeDamage(float amount)
         {
-            enemyHealth -= damage;
+            enemyHealth -= amount;
             if (enemyHealth <= 0) Invoke(nameof(DestroyEnemy), .5f);
         }
 

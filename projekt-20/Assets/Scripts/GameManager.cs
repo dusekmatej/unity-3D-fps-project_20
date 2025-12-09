@@ -4,18 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static string savePath = Application.persistentDataPath + "/SaveGame.json";
-    public Vector3 PlayerData()
+    /*public Vector3 PlayerData()
     {
-<<<<<<< HEAD
-        
-<<<<<<< HEAD
-=======
         LoadSystem loadSystem = FindObjectOfType<LoadSystem>();
         loadSystem.LoadGame();
->>>>>>> EnemySpawnerAndBuffs
-=======
         return transform.position;
->>>>>>> Kopecky/MenuUtils
     }
 
     public static void Savegame()
@@ -26,7 +19,7 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(data,true);
         File.WriteAllText(savePath, json);
         
-    }
+    }*/
 
     public static void Loadgame()
     {

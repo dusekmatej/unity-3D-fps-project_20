@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Pro na��t�n� sc�n
+using UnityEngine.SceneManagement; 
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI; // Reference na Panel pause menu
+    public GameObject pauseMenuUI; // Reference for Panel pause menu
     private bool isPaused = false;
 
     void Update()
     {
-        // Aktivace/deaktivace pause menu klavesou Escape
+        // Activation using escape key 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -26,46 +26,39 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false); // Skryj pause menu
-        Time.timeScale = 1f;         // Obnov beh hry
-        Cursor.lockState = CursorLockMode.Locked; // Uzamkni kurzor
-        Cursor.visible = false;     // Skryj kurzor
+        pauseMenuUI.SetActive(false); 
+        Time.timeScale = 1f;         
+        Cursor.lockState = CursorLockMode.Locked; // cursor lock
+        Cursor.visible = false;     
         isPaused = false;
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true); // Zobraz pause menu
-        Time.timeScale = 0f;        // Zastav cas ve hre
-        Cursor.lockState = CursorLockMode.None;  // Uvolni kurzor
-        Cursor.visible = true;      // Zobraz kurzor
+        pauseMenuUI.SetActive(true); // Show pause menu
+        Time.timeScale = 0f;        // Stop gametime
+        Cursor.lockState = CursorLockMode.None;  // cursor unlock
+        Cursor.visible = true;      
         isPaused = true;
     }
 
     public void QuitGame()
     {
         Debug.Log("Quitting game...");
-        Application.Quit(); // Ukonceni aplikace
+        Application.Quit(); 
     }
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // Obnov cas (v hlavnim menu cas bude normalni)
-        SceneManager.LoadScene("MainMenu"); // Nacti scenu hlavniho menu
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("MainMenu"); 
     }
-    public SaveSystem saveSystem;
+    
     public Transform playerTransform;
 
    public void SaveGame()
 {
-    if (playerTransform != null)
-    {
-        saveSystem.SaveGame(playerTransform);
-    }
-    else
-    {
-        Debug.LogError("Transform hrace neni nastaven");
-    }
+   GameManager.Savegame();
 }
 
 }

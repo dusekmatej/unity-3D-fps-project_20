@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit");
     }
-    public SaveSystem saveSystem; // Odkaz na SaveSystem
+    public SaveSystem saveSystem; 
 
     public void ContinueGame()
     {

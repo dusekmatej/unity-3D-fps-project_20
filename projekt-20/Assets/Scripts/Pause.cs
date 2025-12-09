@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Pro naèítání scén
+using UnityEngine.SceneManagement; // Pro naï¿½ï¿½tï¿½nï¿½ scï¿½n
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Aktivace/deaktivace pause menu klávesou Escape
+        // Aktivace/deaktivace pause menu klavesou Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false); // Skryj pause menu
-        Time.timeScale = 1f;         // Obnov bìh hry
+        Time.timeScale = 1f;         // Obnov beh hry
         Cursor.lockState = CursorLockMode.Locked; // Uzamkni kurzor
         Cursor.visible = false;     // Skryj kurzor
         isPaused = false;
@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true); // Zobraz pause menu
-        Time.timeScale = 0f;        // Zastav èas ve høe
+        Time.timeScale = 0f;        // Zastav cas ve hre
         Cursor.lockState = CursorLockMode.None;  // Uvolni kurzor
         Cursor.visible = true;      // Zobraz kurzor
         isPaused = true;
@@ -45,13 +45,13 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quitting game...");
-        Application.Quit(); // Ukonèení aplikace
+        Application.Quit(); // Ukonceni aplikace
     }
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // Obnov èas (v hlavním menu èas bìží normálnì)
-        SceneManager.LoadScene("MainMenu"); // Naèti scénu hlavního menu
+        Time.timeScale = 1f; // Obnov cas (v hlavnim menu cas bude normalni)
+        SceneManager.LoadScene("MainMenu"); // Nacti scenu hlavniho menu
     }
     public SaveSystem saveSystem;
     public Transform playerTransform;

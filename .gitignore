@@ -95,6 +95,10 @@ InitTestScene*.unity*
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
 
+projekt-20/Library/
+projekt-20/obj/
+projekt-20/UserSettings/
+
 # Auto-generated scenes by play mode tests
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream

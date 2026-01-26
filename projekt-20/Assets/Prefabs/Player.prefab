@@ -14767,6 +14767,8 @@ GameObject:
   - component: {fileID: 2319779891899362602}
   - component: {fileID: 4079693557619980712}
   - component: {fileID: 8316534452381145374}
+  - component: {fileID: 2425668517274295649}
+  - component: {fileID: 716005828656766843}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -14973,6 +14975,42 @@ MonoBehaviour:
   footstepClips:
   - {fileID: 8300000, guid: d2c3c3c13f058434eb7f825a25ab592d, type: 3}
   stepInterval: 5
+--- !u!114 &2425668517274295649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782581983677517100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b16d2abe67470691d09ea81b656146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &716005828656766843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782581983677517100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28420ff4217ef9e43a0f12304227c2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health:
+    statisticName: Health
+    currentValue: 100
+    maxValue: 100
+  Thirst:
+    statisticName: Thirst
+    currentValue: 100
+    maxValue: 100
+  Hunger:
+    statisticName: Hunger
+    currentValue: 100
+    maxValue: 100
 --- !u!1 &8769689705645357186
 GameObject:
   m_ObjectHideFlags: 0
@@ -20161,6 +20199,9 @@ MonoBehaviour:
   muzzleFlash1: {fileID: 4824354593864297632}
   muzzleFlash2: {fileID: 7630230757644600292}
   impactEffect: {fileID: 0}
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &2741909618412204993
 Animator:
   serializedVersion: 5
@@ -20877,6 +20918,9 @@ MonoBehaviour:
   muzzleFlash1: {fileID: 2587689407407319231}
   muzzleFlash2: {fileID: 979693094000694808}
   impactEffect: {fileID: 0}
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &559813532207322852
 MonoBehaviour:
   m_ObjectHideFlags: 0

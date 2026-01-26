@@ -97,6 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 =======
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
@@ -105,3 +106,6 @@ InitTestScene*.unity*
 =======
 >>>>>>> Stashed changes
 >>>>>>> Kopecky/MenuUtils
+=======
+/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+>>>>>>> Stashed changes

@@ -25,6 +25,7 @@ public class Statistic
     public void Modify(float amount)
     {
         currentValue = Mathf.Clamp(currentValue + amount, 0, maxValue);
+        
         OnValueChanged?.Invoke(currentValue);
     }
 

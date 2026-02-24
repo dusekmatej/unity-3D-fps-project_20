@@ -407,7 +407,6 @@
 "Assets/Scripts/enemyAI.cs"
 "Assets/Scripts/EnemyDamage.cs"
 "Assets/Scripts/GameManagement/GameState.cs"
-"Assets/Scripts/GameManagement/MainMenuManager.cs"
 "Assets/Scripts/GameManagement/SaveSystem/ISaveable.cs"
 "Assets/Scripts/GameManagement/SaveSystem/ItemsToSave.cs"
 "Assets/Scripts/GameManagement/SaveSystem/PlayerStatsData.cs"

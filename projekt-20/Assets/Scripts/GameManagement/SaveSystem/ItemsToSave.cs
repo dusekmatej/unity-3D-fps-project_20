@@ -1,7 +1,12 @@
+using System;
 using GameManagement.SaveSystem;
 
-public class ItemsToSave
+namespace GameManagement.SaveSystem
 {
-    public PlayerTransformData playerTransform;
-    public PlayerStatsData playerStats;
+    [Serializable]
+    public class ItemsToSave
+    {
+        public PlayerTransformData playerTransform;
+        public PlayerStatsData playerStats;
+    }
 }

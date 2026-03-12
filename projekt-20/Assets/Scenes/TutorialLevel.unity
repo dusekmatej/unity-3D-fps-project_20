@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1496,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.9924528, g: 0.05949409, b: 0.058049075, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1893,6 +1892,18 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 716005828656766843, guid: a91a61089a075064fbc38fb02fac9c1f, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1074620463}
+    - target: {fileID: 716005828656766843, guid: a91a61089a075064fbc38fb02fac9c1f, type: 3}
+      propertyPath: maxRedAlpha
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 716005828656766843, guid: a91a61089a075064fbc38fb02fac9c1f, type: 3}
+      propertyPath: damageOverlay
+      value: 
+      objectReference: {fileID: 1178601929}
     - target: {fileID: 2141413210628831973, guid: a91a61089a075064fbc38fb02fac9c1f, type: 3}
       propertyPath: shootingSound
       value: 
@@ -2553,6 +2564,10 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 1074620463}
+    - target: {fileID: 6782364224381605686, guid: 50769a16f4820a6449bb076a5d63489d, type: 3}
+      propertyPath: maxRedAlpha
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6782364224381605686, guid: 50769a16f4820a6449bb076a5d63489d, type: 3}
       propertyPath: damageOverlay
       value: 

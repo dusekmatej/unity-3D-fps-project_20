@@ -1,5 +1,5 @@
-using System.Numerics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameManagement.SaveSystem
 {
@@ -9,6 +9,7 @@ namespace GameManagement.SaveSystem
         {
             return new PlayerTransformData
             {
+                levelSceneName = SceneManager.GetActiveScene().name,
                 position = transform.position,
                 rotation = transform.rotation,
             };
@@ -17,7 +18,7 @@ namespace GameManagement.SaveSystem
         public void RestoreState(object state)
         {
             var savedState = (PlayerTransformData)state;
-
+            
             transform.position = savedState.position;
             transform.rotation = savedState.rotation;
         }

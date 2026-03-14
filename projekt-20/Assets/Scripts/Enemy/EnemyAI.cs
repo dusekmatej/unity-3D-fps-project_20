@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 // TODO: Health system - in work
 
@@ -19,8 +20,10 @@ namespace Enemy
         public float attackRange = 10f;  
         public float attackCooldown = 2f;
         public float enemyHealth = 50f;
+        public float enemyMaxHealth = 50f;
         public float pointThreshDistance = 5f;
         public GameObject projectile;
+        public Image healthBar;
     
         [Header("Debug options")]
         [SerializeField] private bool debugMode;
@@ -254,6 +257,13 @@ namespace Enemy
         {
             enemyHealth -= amount;
             if (enemyHealth <= 0) Invoke(nameof(DestroyEnemy), .5f);
+            
+            UpdateHealthBar(enemyHealth, enemyMaxHealth);
+        }
+
+        private void UpdateHealthBar(float health, float maxHealth)
+        {
+            healthBar.fillAmount = health / maxHealth;
         }
 
         private void DestroyEnemy()

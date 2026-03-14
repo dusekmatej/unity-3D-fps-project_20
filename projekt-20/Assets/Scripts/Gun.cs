@@ -33,10 +33,6 @@ public class GunScript : MonoBehaviour
 
     void Shoot()
     {
-        EnemyAI enemyAi = new EnemyAI();
-        
-        Debug.Log("Shoot pressed");
-
         if (muzzleFlash1 != null) muzzleFlash1.Play();
         if (muzzleFlash2 != null) muzzleFlash2.Play();
 
@@ -46,14 +42,8 @@ public class GunScript : MonoBehaviour
         
         int layerMask = ~excludeLayers;
 
-        // Debug.DrawRay(origin, direction * range, Color.red, 10f);
-
         if (Physics.Raycast(origin, direction, out hit, range, layerMask))
         {
-            // Debug.DrawLine(origin, hit.point, Color.yellow, 1f);
-
-            Debug.Log($"Ray hit: {hit.transform.name} (layer: {LayerMask.LayerToName(hit.transform.gameObject.layer)}), collider: {hit.collider}");
-            
             if (hit.transform.CompareTag("Enemy"))
             {
                 var enemy = hit.transform.GetComponent<EnemyAI>();
@@ -63,7 +53,6 @@ public class GunScript : MonoBehaviour
                     Debug.Log($"Dealt {damage} damage to {hit.transform.name}");
                 }
             }
-
         }
     }
 }

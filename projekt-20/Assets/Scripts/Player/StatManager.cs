@@ -1,3 +1,4 @@
+using System;
 using GameManagement.SaveSystem;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,9 @@ public class StatManager : MonoBehaviour, ISaveable
 
     void Start()
     {
+        foreach (var stat in AllStats)
+            stat.Initialize();
+        
         if (volume != null && volume.profile.TryGetSettings(out vignette))
         {
             vignette.intensity.Override(0f);
@@ -50,7 +54,7 @@ public class StatManager : MonoBehaviour, ISaveable
     }
 
     // ==============================
-    // STAT LOGIKA (pùvodní)
+    // STAT LOGIKA (pï¿½vodnï¿½)
     // ==============================
 
     void UpdateStats()
@@ -59,10 +63,16 @@ public class StatManager : MonoBehaviour, ISaveable
         Thirst.Modify(-Time.deltaTime * 0.5f);
 
         if (Hunger.Value <= 0)
+        {
             Health.Modify(-Time.deltaTime * 0.1f);
+            Debug.Log("Health modify for hunger" + Health.Value);
+        }
 
         if (Thirst.Value <= 0)
+        {
             Health.Modify(-Time.deltaTime * 0.2f);
+            Debug.Log("Health modify for hunger" + Health.Value);
+        }
     }
 
     // ==============================
@@ -91,7 +101,7 @@ public class StatManager : MonoBehaviour, ISaveable
     }
 
     // ==============================
-    // VIGNETTE EFFECT (Hlad / Žízeò)
+    // VIGNETTE EFFECT (Hlad / ï¿½ï¿½zeï¿½)
     // ==============================
 
     void UpdateVignetteEffect()

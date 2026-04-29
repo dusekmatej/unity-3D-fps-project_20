@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 using UnityEngine;
@@ -22,7 +23,6 @@ namespace Enemy
 
         void HandleHit(GameObject hit)
         {
-
             if (hit.CompareTag("Player"))
             {
                 StatManager statManager = FindObjectOfType<StatManager>();
@@ -31,8 +31,7 @@ namespace Enemy
                     statManager.Health.Modify(damage);
                 }
             }
-
-            Destroy(gameObject , 5f);
+            Destroy(gameObject, 5f);
         }
     }
 }
